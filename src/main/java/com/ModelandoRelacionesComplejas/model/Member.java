@@ -1,12 +1,12 @@
 package com.ModelandoRelacionesComplejas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+
+
+
 
 @Data
 @Entity
@@ -15,6 +15,12 @@ public class Member {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String name;
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private LocalDate renewal;
+
+    public enum Status {
+        ACTIVE, LAPSED
+    }
+
 }

@@ -16,10 +16,16 @@ public class Event {
     private int duration;
     private String location;
     private String title;
-    private int type;
+    @Enumerated(EnumType.STRING)
+    private EventType type;
 
     @OneToMany
     private List<Guest> guests;
     @OneToMany
     private List<Speaker> speakers;
+
+
+    public enum EventType {
+        CONFERENCE, EXPOSITION
+    }
 }

@@ -1,9 +1,6 @@
 package com.ModelandoRelacionesComplejas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -14,5 +11,11 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     private String name;
-    private byte status;
+    @Enumerated(EnumType.STRING)
+    private GuestStatus status;
+
+
+    public enum GuestStatus {
+        ATTENDING, NOT_ATTENDING, NO_RESPONSE
+    }
 }
